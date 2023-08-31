@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".BoundServices">
+    tools:context=".BoundServicesActivity">
 
-    <TextView
+
+    <Button
+        android:id="@+id/print_timestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="match_parent"
-
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:text="Print Timestamp" />
+    <TextView
+        android:id="@+id/timestamp_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
-
+        android:layout_below="@+id/print_timestamp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <Button
-        android:id="@+id/btn2"
-        android:layout_width="match_parent"
+        android:id="@+id/stop_service"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_below="@+id/print_timestamp"
+        android:layout_centerHorizontal="true"
+        android:text="Stop Service" />
 
-</LinearLayout>
+</RelativeLayout>

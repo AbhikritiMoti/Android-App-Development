@@ -5,6 +5,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,23 +25,38 @@
         android:theme="@style/Theme.E_Services"
         tools:targetApi="31">
         <activity
-            android:name=".BoundServices"
-            android:exported="false" />
-        <activity
-            android:name=".ForegroundServiceActivityDemo"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".JobServicesActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:name=".BoundServicesActivity"
+            android:exported="false">
 
-        <service android:name=".UnboundServices" />
-        <service android:name=".ForegroundDemo" />
+        </activity>
+        <activity
+            android:name=".ForegroundServicesActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".UnboundServicesActivity"
+            android:exported="false">
+
+        </activity>
+
+        <service android:name=".BoundServiceClass" />
+        <service android:name=".UnboundServicesClass" />
+        <service android:name=".ForegroundServicesClass" />
+        <service
+            android:name=".JobServicesClass"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
     </application>
 
 </manifest>

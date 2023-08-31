@@ -2,12 +2,13 @@ package com.example.e_services
 
 import android.app.Service
 import android.content.Intent
+import android.os.Binder
 import android.os.IBinder
 import android.os.SystemClock
 import android.util.Log
 import android.widget.Chronometer
 
-class BoundServiceDemo: Service() {
+class BoundServiceClass: Service() {
     private val LOG_TAG = "Bound Service"
     private val mBinder: IBinder = MyBinder()
     private var mChronometer: Chronometer?=null
@@ -39,12 +40,21 @@ class BoundServiceDemo: Service() {
         mChronometer!!.stop()
     }
 
-    fun getTimestamp():String?{
-        val elapsedMills = (SystemClock.elapsedRealtime() - mChronometer!!.base)
-        val hours = (elapsedMills/3600000.toInt())
-        val minutes = (elapsedMills -hours * 3600000).toInt()/60000
-        val seconds = (elapsedMills -hours * 3600000 - minutes * 60000).toInt()/100
-        val mills = (elapsedMills - hours * 3600000 -minutes * 60000 -seconds * 1000).toInt()
-        return "$hours: $minutes: $seconds: $mills"
+    fun getTimestamp(): String? {
+        val elapsedMillis = (SystemClock.elapsedRealtime()
+                - mChronometer!!.base)
+        val hours = (elapsedMillis / 3600000).toInt()
+        val minutes = (elapsedMillis - hours * 3600000).toInt() / 60000
+        val seconds = (elapsedMillis - hours * 3600000 - minutes * 60000).
+        toInt() / 1000
+        val millis = (elapsedMillis - hours * 3600000 - minutes * 60000 -
+                seconds * 1000).toInt()
+        return "$hours:$minutes:$seconds:$millis"
+    }
+    inner  class MyBinder: Binder()
+    {
+        fun getService():BoundServiceClass {
+            return this@BoundServiceClass
+        }
     }
 }

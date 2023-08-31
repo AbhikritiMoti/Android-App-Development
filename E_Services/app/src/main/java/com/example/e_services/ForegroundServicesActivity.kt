@@ -6,24 +6,24 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.core.content.ContextCompat
 
-class ForegroundServiceActivityDemo : AppCompatActivity() {
+class ForegroundServicesActivity : AppCompatActivity() {
     lateinit var start:Button
     lateinit var stop:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_foreground_service_demo)
+        setContentView(R.layout.activity_foreground_services)
 
-        start=findViewById(R.id.btn1)
-        stop=findViewById(R.id.btn2)
+        start=findViewById(R.id.buttonStart)
+        stop=findViewById(R.id.buttonStop)
         start.setOnClickListener {
-            val startIntent = Intent(this,ForegroundDemo::class.java)
+            val startIntent = Intent(this,ForegroundServicesClass::class.java)
             startIntent.putExtra("inputExtra", "Foreground Services is running")
             ContextCompat.startForegroundService(this,startIntent)
         }
 
         stop.setOnClickListener {
-            val stopIntent = Intent(this,ForegroundDemo::class.java)
-            stopIntent.putExtra("inputExtra", "Foreground Services is stopped")
+            val stopIntent = Intent(this,ForegroundServicesClass::class.java)
+//            stopIntent.putExtra("inputExtra", "Foreground Services is stopped")
             stopService(stopIntent)
         }
     }
