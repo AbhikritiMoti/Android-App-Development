@@ -10,9 +10,8 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 
-class demo(context: Context, val resource : Int, var objects: MutableList<DataModelClass>):
-    ArrayAdapter<DataModelClass>(context,resource,objects) {
-
+class CustomListViewAdapter(context: Context, val resource : Int, var objects: MutableList<CustomListView_DataModelClass>):
+    ArrayAdapter<CustomListView_DataModelClass>(context,resource,objects) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater= LayoutInflater.from(context)
 
@@ -27,7 +26,7 @@ class demo(context: Context, val resource : Int, var objects: MutableList<DataMo
 
         val btn: Button =view.findViewById(R.id.status)
 
-        val item:DataModelClass=objects[position]
+        val item:CustomListView_DataModelClass=objects[position]
 
         imageView.setImageDrawable(context.resources.getDrawable(item.img))
         title.text=item.title
@@ -48,7 +47,6 @@ class demo(context: Context, val resource : Int, var objects: MutableList<DataMo
 
 
         }
-
         return  view
     }
 }
