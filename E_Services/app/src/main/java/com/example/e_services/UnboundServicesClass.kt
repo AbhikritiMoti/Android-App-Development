@@ -5,6 +5,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.IBinder
 import android.provider.Settings
+import android.util.Log
 
 
 class UnboundServicesClass: Service() {
@@ -23,6 +24,8 @@ class UnboundServicesClass: Service() {
     override fun onDestroy() {
         super.onDestroy()
         mp.stop()
+
+        Log.d("UnboundServicesClass", "Service onDestroy called")
     }
 
     override fun stopService(name: Intent?): Boolean {
